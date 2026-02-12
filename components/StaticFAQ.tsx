@@ -3,8 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { faqs } from '../constants';
 import AnimatedElement from './AnimatedElement';
 
-const FAQItem: React.FC<{ faq: typeof faqs[0]; index: number; }> = ({ faq, index }) => {
-    const [isOpen, setIsOpen] = useState(false);
+interface FAQItemProps {
+  faq: typeof faqs[0];
+  index: number;
+  isOpen: boolean;
+  onToggle: (index: number) => void;
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ faq, index, isOpen, onToggle }) => {
     const [feedbackState, setFeedbackState] = useState<'idle' | 'submitted'>('idle');
 
     const handleFeedback = () => {
@@ -25,7 +31,7 @@ const FAQItem: React.FC<{ faq: typeof faqs[0]; index: number; }> = ({ faq, index
     return (
         <div className="border-b border-slate-200 dark:border-slate-700/50 py-5">
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => onToggle(index)}
                 className="w-full flex justify-between items-center text-left"
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}
@@ -73,6 +79,12 @@ interface StaticFAQProps {
 }
 
 const StaticFAQ: React.FC<StaticFAQProps> = ({ showTitle = true, className = '' }) => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const handleToggle = (index: number) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
+
     return (
         <div className={`${showTitle ? 'mt-20 lg:mt-32' : ''} ${className}`}>
             {showTitle && (
@@ -85,7 +97,13 @@ const StaticFAQ: React.FC<StaticFAQProps> = ({ showTitle = true, className = '' 
             <AnimatedElement animation="fade-in-up" delay={showTitle ? 'duration-700' : 'duration-300'}>
                 <div className="max-w-3xl mx-auto">
                     {faqs.map((faq, index) => (
-                        <FAQItem key={index} faq={faq} index={index} />
+                        <FAQItem 
+                            key={index} 
+                            faq={faq} 
+                            index={index}
+                            isOpen={openIndex === index}
+                            onToggle={handleToggle}
+                        />
                     ))}
                 </div>
             </AnimatedElement>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { clientLogos } from '../constants';
 import AnimatedElement from './AnimatedElement';
+import ProgressiveImage from './ProgressiveImage';
 
 const ClientLogos: React.FC = () => {
     return (
@@ -23,12 +24,12 @@ const ClientLogos: React.FC = () => {
 
                 <div className="absolute top-0 left-0 flex items-center w-max animate-infinite-scroll group-hover:pause">
                     {[...clientLogos, ...clientLogos].map((logo, index) => (
-                        <div key={index} className="flex-shrink-0 w-48 flex items-center justify-center mx-4">
-                            <img 
+                        <div key={index} className="flex-shrink-0 w-48 h-10 flex items-center justify-center mx-4">
+                            <ProgressiveImage 
                                 src={logo.src} 
+                                placeholderSrc={logo.src}
                                 alt={logo.name} 
                                 className="h-8 md:h-10 object-contain aspect-auto filter grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300" 
-                                loading="lazy"
                             />
                         </div>
                     ))}

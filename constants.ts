@@ -3,7 +3,7 @@ export const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Services', href: '#services' },
   { name: 'About Us', href: '#about' },
-  { name: 'FAQ', href: '#help-and-support' },
+  { name: 'Help & Support', href: '#help-and-support' },
 ];
 
 export const services = [
@@ -13,8 +13,8 @@ export const services = [
     title: 'Product Branding & Design',
     description: 'Crafting unique brand identities and product designs that resonate with your target audience.',
     details: 'Our design process involves market research, competitor analysis, and creative brainstorming to build a brand that not only looks great but also communicates your core values effectively.',
-    image: 'https://picsum.photos/seed/branding/600/400',
-    placeholderImage: 'https://picsum.photos/seed/branding/60/40?blur=2'
+    image: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg',
+    placeholderImage: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg'
   },
   {
     icon: 'earth-outline',
@@ -22,8 +22,8 @@ export const services = [
     title: 'Global Procurement',
     description: 'Strategic sourcing and procurement services to find the best suppliers and materials worldwide.',
     details: 'We leverage our extensive network of trusted international suppliers to source high-quality materials at competitive prices, handling negotiations and logistics to streamline your supply chain.',
-    image: 'https://picsum.photos/seed/procurement/600/400',
-    placeholderImage: 'https://picsum.photos/seed/procurement/60/40?blur=2'
+    image: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg',
+    placeholderImage: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg'
   },
   {
     icon: 'airplane-outline',
@@ -31,8 +31,8 @@ export const services = [
     title: 'Air & Sea Cargo',
     description: 'Reliable and efficient air and sea freight solutions to move your goods across the globe seamlessly.',
     details: 'Whether you need the speed of air freight or the cost-effectiveness of sea cargo, we offer flexible and secure shipping options with real-time tracking and customs clearance support.',
-    image: 'https://picsum.photos/seed/shipping/600/400',
-    placeholderImage: 'https://picsum.photos/seed/shipping/60/40?blur=2'
+    image: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg',
+    placeholderImage: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg'
   },
   {
     icon: 'business-outline',
@@ -40,8 +40,8 @@ export const services = [
     title: 'Supplier Visitations',
     description: 'On-site factory and supplier visits to ensure quality control and build strong business relationships.',
     details: 'We act as your representatives on the ground, conducting thorough factory audits and quality inspections to ensure your production standards are met and fostering strong partnerships.',
-    image: 'https://picsum.photos/seed/visitation/600/400',
-    placeholderImage: 'https://picsum.photos/seed/visitation/60/40?blur=2'
+    image: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg',
+    placeholderImage: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg'
   },
 ];
 
@@ -77,32 +77,32 @@ export const testimonials = [
   {
     name: 'John Doe',
     company: 'Tech Innovators Inc.',
-    image: 'https://picsum.photos/100/100?random=1',
-    placeholderImage: 'https://picsum.photos/20/20?random=1&blur=2',
+    image: 'https://i.pravatar.cc/100?u=johndoe',
+    placeholderImage: 'https://i.pravatar.cc/100?u=johndoe',
     quote: 'Amber Landon Services revolutionized our supply chain. Their professionalism and efficiency are unmatched. Highly recommended!',
     rating: 5,
   },
   {
     name: 'Jane Smith',
     company: 'Fashion Forward Ltd.',
-    image: 'https://picsum.photos/100/100?random=2',
-    placeholderImage: 'https://picsum.photos/20/20?random=2&blur=2',
+    image: 'https://i.pravatar.cc/100?u=janesmith',
+    placeholderImage: 'https://i.pravatar.cc/100?u=janesmith',
     quote: 'The branding and design services exceeded our expectations. Our products now have a premium look that has boosted sales.',
     rating: 5,
   },
   {
     name: 'Samuel Green',
     company: 'Global Goods Co.',
-    image: 'https://picsum.photos/100/100?random=3',
-    placeholderImage: 'https://picsum.photos/20/20?random=3&blur=2',
+    image: 'https://i.pravatar.cc/100?u=samuelgreen',
+    placeholderImage: 'https://i.pravatar.cc/100?u=samuelgreen',
     quote: 'Navigating international shipping was a headache before we found Amber Landon. They handle everything with precision and care.',
     rating: 4,
   },
   {
     name: 'Emily White',
     company: 'Artisan Crafts',
-    image: 'https://picsum.photos/100/100?random=4',
-    placeholderImage: 'https://picsum.photos/20/20?random=4&blur=2',
+    image: 'https://i.pravatar.cc/100?u=emilywhite',
+    placeholderImage: 'https://i.pravatar.cc/100?u=emilywhite',
     quote: 'Their procurement team found us incredible suppliers we could have never reached on our own. A true partner in our growth.',
     rating: 5,
   },

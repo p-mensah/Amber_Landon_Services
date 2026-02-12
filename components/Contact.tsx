@@ -14,10 +14,35 @@ type FormFields = {
     message: string;
 };
 
+const SuccessAnimation: React.FC = () => (
+    <div className="flex flex-col items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" className="mb-2">
+            <g fill="none" strokeWidth="3">
+                <circle cx="32" cy="32" r="30" className="stroke-current text-slate-200 dark:text-slate-600" />
+                <circle 
+                    cx="32" 
+                    cy="32" 
+                    r="30" 
+                    className="stroke-current text-emerald-accent transform -rotate-90 origin-center animate-progress-ring" 
+                    style={{ strokeDasharray: 188.5, strokeDashoffset: 188.5 }} 
+                />
+                <path 
+                    d="M20 32l8 8 16-16" 
+                    className="stroke-current text-emerald-accent animate-checkmark" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    style={{ strokeDasharray: 40, strokeDashoffset: 40 }} 
+                />
+            </g>
+        </svg>
+        <p className="text-emerald-accent font-semibold">Quote request sent successfully!</p>
+    </div>
+);
+
 const InfoCard: React.FC<{ icon: string; title:string; children: React.ReactNode }> = ({ icon, title, children }) => (
     <div className="flex items-start space-x-5 p-5 rounded-lg bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
         <div className="mt-1 text-3xl text-orange-primary dark:text-amber-primary">
-            <ion-icon name={icon}></ion-icon>
+            <span className="inline-block" dangerouslySetInnerHTML={{ __html: `<ion-icon name="${icon}"></ion-icon>` }} />
         </div>
         <div>
             <h3 className="font-poppins font-semibold text-slate-800 dark:text-white">{title}</h3>
@@ -216,8 +241,8 @@ const ContactContent: React.FC = () => {
                                     <textarea id="message" value={formData.message} onChange={handleChange} onBlur={handleBlur} rows={3} className={`peer w-full px-4 py-3 bg-transparent border-b-2 ${errors.message && touched.message ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'} outline-none focus:border-orange-primary dark:focus:border-amber-primary transition-colors resize-none`} ></textarea>
                                     <label htmlFor="message" className="absolute left-4 -top-3.5 text-sm text-slate-500 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-orange-primary dark:peer-focus:text-amber-primary">Additional Details</label>
                                 </div>
-                                <div aria-live="polite" className="h-6 text-center transition-all duration-300">
-                                    {status === 'success' && <p className="text-emerald-accent">Quote request sent successfully!</p>}
+                                <div aria-live="polite" className="h-28 text-center transition-all duration-300 flex items-center justify-center">
+                                    {status === 'success' && <SuccessAnimation />}
                                     {status === 'error' && Object.keys(errors).length === 0 && <p className="text-red-500">An unknown error occurred. Please try again.</p>}
                                 </div>
                                 <button type="submit" disabled={status === 'sending'} className="w-full text-white font-poppins font-semibold py-4 px-8 rounded-full bg-gradient-to-r from-orange-primary to-amber-primary hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-orange-primary/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center">

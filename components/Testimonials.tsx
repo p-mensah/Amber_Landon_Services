@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { testimonials } from '../constants';
 import AnimatedElement from './AnimatedElement';
-import ClientLogos from './ClientLogos';
 import ProgressiveImage from './ProgressiveImage';
 
 const StarRating = ({ rating, className = '' }: { rating: number; className?: string }) => {
@@ -112,8 +111,6 @@ const Testimonials: React.FC = () => {
             <div className="swiper-button-next -right-0 md:-right-8 top-1/2 -translate-y-1/2 hidden md:flex"></div>
           </div>
         </AnimatedElement>
-
-        <ClientLogos />
       </div>
     </section>
   );

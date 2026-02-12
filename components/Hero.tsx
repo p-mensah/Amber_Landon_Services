@@ -2,15 +2,15 @@
 import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import AnimatedElement from './AnimatedElement';
-import ParticlesCanvas from './ParticlesCanvas';
+import GradientMeshCanvas from './GradientMeshCanvas';
 import ProgressiveImage from './ProgressiveImage';
 
 const heroImages = [
-  { src: 'https://picsum.photos/seed/cargo-ship/1920/1080?grayscale', placeholder: 'https://picsum.photos/seed/cargo-ship/192/108?grayscale&blur=2' },
-  { src: 'https://picsum.photos/seed/air-freight/1920/1080?grayscale', placeholder: 'https://picsum.photos/seed/air-freight/192/108?grayscale&blur=2' },
-  { src: 'https://picsum.photos/seed/port-containers/1920/1080?grayscale', placeholder: 'https://picsum.photos/seed/port-containers/192/108?grayscale&blur=2' },
-  { src: 'https://picsum.photos/seed/warehouse-logistics/1920/1080?grayscale', placeholder: 'https://picsum.photos/seed/warehouse-logistics/192/108?grayscale&blur=2' },
-  { src: 'https://picsum.photos/seed/shipping-docks/1920/1080?grayscale', placeholder: 'https://picsum.photos/seed/shipping-docks/192/108?grayscale&blur=2' },
+  { src: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg', placeholder: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg' },
+  { src: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg', placeholder: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg' },
+  { src: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg', placeholder: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg' },
+  { src: 'https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg', placeholder: 'https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg' },
+  { src: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg', placeholder: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg' },
 ];
 
 const Hero: React.FC = () => {
@@ -40,6 +40,10 @@ const Hero: React.FC = () => {
         },
         allowTouchMove: false,
         speed: 1500,
+        navigation: {
+          nextEl: '.hero-slider .swiper-button-next',
+          prevEl: '.hero-slider .swiper-button-prev',
+        },
       });
     }
 
@@ -64,9 +68,11 @@ const Hero: React.FC = () => {
             </div>
           ))}
         </div>
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
       </div>
       
-      <ParticlesCanvas />
+      <GradientMeshCanvas />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent dark:from-navy dark:via-navy/80"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -85,7 +91,7 @@ const Hero: React.FC = () => {
         <AnimatedElement animation="zoom-in" delay="duration-1000">
           <div className="mt-10">
             <a href="#help-and-support" className="inline-block text-white font-poppins font-semibold py-4 px-8 rounded-full bg-gradient-to-r from-orange-primary to-amber-primary hover:scale-105 transform transition-transform duration-300 shadow-lg hover:shadow-orange-primary/50 animate-pulse-glow">
-              Get a Free Quote
+              Request a Free Quote
             </a>
           </div>
         </AnimatedElement>

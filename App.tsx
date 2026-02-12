@@ -15,25 +15,25 @@ import ChatWidget from './components/ChatWidget';
 const App: React.FC = () => {
   return (
     <div className="relative isolate min-h-screen">
-       <div className="absolute inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-navy bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-navy bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       <div className="absolute -z-10 top-0 left-0 w-full h-[50vh] bg-gradient-to-br from-purple-accent/10 via-deep-blue/10 to-transparent dark:from-purple-accent/20 dark:via-deep-blue/20"></div>
 
       <Header />
       <main>
         <Hero />
-        <AnimatedElement>
+        <AnimatedElement animation="fade-in-up">
           <Services />
         </AnimatedElement>
-        <AnimatedElement>
+        <AnimatedElement animation="fade-in">
           <About />
         </AnimatedElement>
-        <AnimatedElement>
+        <AnimatedElement animation="fade-in-up">
           <Process />
         </AnimatedElement>
-        <AnimatedElement>
+        <AnimatedElement animation="zoom-in">
           <Testimonials />
         </AnimatedElement>
-        <AnimatedElement>
+        <AnimatedElement animation="fade-in">
           <HelpAndSupport />
         </AnimatedElement>
       </main>

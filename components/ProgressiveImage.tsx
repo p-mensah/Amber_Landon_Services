@@ -20,18 +20,17 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({ src, placeholderSrc
   }, [src]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden">
       <img
         src={placeholderSrc}
         alt={alt}
-        className={`${className} filter blur-md transition-opacity duration-1000 ease-out`}
-        style={{ opacity: isLoaded ? 0 : 1 }}
+        aria-hidden="true"
+        className={`${className} transition-all duration-1000 ease-in-out ${isLoaded ? 'opacity-0 blur-none scale-100' : 'opacity-100 blur-md scale-105'}`}
       />
       <img
         src={src}
         alt={alt}
-        className={`${className} absolute inset-0 transition-opacity duration-1000 ease-in`}
-        style={{ opacity: isLoaded ? 1 : 0 }}
+        className={`${className} absolute inset-0 transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         loading="lazy"
       />
     </div>

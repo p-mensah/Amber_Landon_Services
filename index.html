@@ -55,6 +55,8 @@
               'pulse-glow': 'pulse-glow 2s infinite ease-in-out',
               'infinite-scroll': 'infinite-scroll 40s linear infinite',
               'border-flow': 'border-flow 4s linear infinite',
+              'progress-ring': 'progress-ring 0.8s ease-out forwards',
+              'checkmark': 'checkmark 0.3s ease-out 0.8s forwards',
             },
             keyframes: {
               'gradient-bg': {
@@ -77,6 +79,12 @@
                 '0%': { backgroundPosition: '0% 50%' },
                 '50%': { backgroundPosition: '100% 50%' },
                 '100%': { backgroundPosition: '0% 50%' },
+              },
+              'progress-ring': {
+                'to': { strokeDashoffset: '0' },
+              },
+              'checkmark': {
+                'to': { strokeDashoffset: '0' },
               }
             }
           },
@@ -108,22 +116,22 @@
       .swiper-slide .star-rating,
       .swiper-slide .client-info {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease;
+        transform: translateY(30px);
+        transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
-      .swiper-slide-active .quote-content {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.3s;
-      }
-      .swiper-slide-active .star-rating {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.2s;
-      }
+      .swiper-slide-active .quote-content,
+      .swiper-slide-active .star-rating,
       .swiper-slide-active .client-info {
         opacity: 1;
         transform: translateY(0);
+      }
+      .swiper-slide-active .quote-content {
+        transition-delay: 0.3s;
+      }
+      .swiper-slide-active .star-rating {
+        transition-delay: 0.2s;
+      }
+      .swiper-slide-active .client-info {
         transition-delay: 0.4s;
       }
       .star {
@@ -137,6 +145,23 @@
         outline: 2px solid #F97316;
         outline-offset: 2px;
         border-radius: 4px;
+      }
+      /* Hero Slider Navigation */
+      .hero-slider .swiper-button-next,
+      .hero-slider .swiper-button-prev {
+        color: white;
+        opacity: 0;
+        transition: all 0.3s ease;
+        --swiper-navigation-size: 32px;
+      }
+      .hero-slider:hover .swiper-button-next,
+      .hero-slider:hover .swiper-button-prev {
+        opacity: 0.7;
+      }
+      .hero-slider .swiper-button-next:hover,
+      .hero-slider .swiper-button-prev:hover {
+        opacity: 1;
+        transform: scale(1.2);
       }
     </style>
   <script type="importmap">

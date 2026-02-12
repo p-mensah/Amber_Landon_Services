@@ -16,7 +16,7 @@ const ServiceCard: React.FC<{ service: Service; index: number; onLearnMore: (ser
     const tiltNode = tiltRef.current;
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    if (tiltNode && !isTouchDevice && window.innerWidth > 768 && (window as any).VanillaTilt) {
+    if (tiltNode && !isTouchDevice && window.matchMedia('(min-width: 768px)').matches && (window as any).VanillaTilt) {
       (window as any).VanillaTilt.init(tiltNode, {
         max: 15,
         speed: 400,
@@ -37,44 +37,45 @@ const ServiceCard: React.FC<{ service: Service; index: number; onLearnMore: (ser
   return (
     <div 
       ref={tiltRef}
-      className="group p-0.5 rounded-xl bg-gradient-to-br from-orange-primary via-purple-accent to-cyan-accent bg-[length:200%_auto] transition-all duration-500 hover:animate-border-flow h-full"
+      className="group p-0.5 rounded-xl bg-gradient-to-br from-orange-primary via-purple-accent to-cyan-accent bg-[length:200%_auto] transition-all duration-500 hover:animate-border-flow h-full [transform-style:preserve-3d]"
       style={{ 
         transitionDelay: `${index * 100}ms`,
-        willChange: 'transform' // Performance optimization for tilt effect
+        willChange: 'transform'
       }}
     >
-      <div className="relative h-full rounded-lg bg-slate-100 dark:bg-slate-800/80 backdrop-blur-sm flex flex-col overflow-hidden transition-all duration-300 shadow-lg dark:shadow-slate-900/50 group-hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3),_0_0_40px_rgba(139,92,246,0.6)]">
+      <div className="relative h-full rounded-lg bg-slate-100 dark:bg-slate-800/80 backdrop-blur-sm flex flex-col overflow-hidden transition-all duration-300 shadow-lg dark:shadow-slate-900/50 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),_0_0_20px_rgba(249,115,22,0.3)] dark:group-hover:shadow-[0_25px_50px_-12px_rgba(15,23,42,0.7),_0_0_20px_rgba(245,158,11,0.3)] [transform:translateZ(20px)] group-hover:[transform:translateZ(40px)] will-change-[transform,box-shadow]">
         
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden will-change-transform">
             <ProgressiveImage src={image} placeholderSrc={placeholderImage} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         
         <div className="p-4 md:p-6 flex flex-col flex-grow">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-orange-primary to-amber-primary text-white text-2xl md:text-3xl mb-4 flex items-center justify-center group-hover:from-emerald-accent group-hover:to-cyan-accent transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-cyan-accent/30 -mt-8 md:-mt-10 z-10 border-4 border-slate-100 dark:border-slate-800/80">
-                {/* FIX: Changed 'class' to 'className' to align with React standards for JSX attributes. */}
+            <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-orange-primary to-amber-primary text-white text-3xl mb-4 flex items-center justify-center group-hover:from-emerald-accent group-hover:to-cyan-accent transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-cyan-accent/30 -mt-10 z-10 border-4 border-slate-100 dark:border-slate-800/80">
                 <ion-icon
                     name={icon}
-                    className="absolute transition-all duration-300 ease-in-out transform group-hover:opacity-0 group-hover:-rotate-12 group-hover:scale-75"
+                    className="absolute transition-all duration-300 ease-out transform group-hover:opacity-0 group-hover:-rotate-12 group-hover:scale-75 will-change-[transform,opacity]"
                 ></ion-icon>
-                {/* FIX: Changed 'class' to 'className' to align with React standards for JSX attributes. */}
                 <ion-icon
                     name={hoverIcon}
-                    className="absolute transition-all duration-300 ease-in-out transform opacity-0 rotate-12 scale-75 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100"
+                    className="absolute transition-all duration-300 ease-out transform opacity-0 rotate-12 scale-75 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 group-hover:drop-shadow-[0_0_6px_rgba(6,182,212,0.7)] will-change-[transform,opacity]"
                 ></ion-icon>
             </div>
             
-            <h3 className="text-lg md:text-xl font-poppins font-semibold text-slate-800 dark:text-white mb-2">{title}</h3>
+            <h3 className="text-xl font-poppins font-semibold text-slate-800 dark:text-white mb-2">{title}</h3>
             
-            {/* This container will expand on hover to reveal the description */}
-            <div className="transition-all duration-500 ease-in-out max-h-0 group-hover:max-h-96 overflow-hidden">
-                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">{description}</p>
+            {/* Content Reveal: Visible on mobile, slide-up on desktop hover */}
+            <div className="grid md:grid-rows-[0fr] group-hover:md:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                <div className="overflow-hidden">
+                    <p className="pt-2 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        {description}
+                    </p>
+                </div>
             </div>
         
-            <div className="mt-auto pt-4"> {/* Use mt-auto to push button to the bottom, pt for spacing */}
-                <button onClick={() => onLearnMore(service)} className="font-poppins font-semibold text-orange-primary dark:text-amber-primary flex items-center text-sm md:text-base group/link">
+            <div className="mt-auto pt-4"> {/* Use mt-auto to push button to the bottom */}
+                <button onClick={() => onLearnMore(service)} className="font-poppins font-semibold text-orange-primary dark:text-amber-primary flex items-center text-sm group/link">
                     Learn More
-                    {/* FIX: Changed 'class' to 'className' to align with React standards for JSX attributes. */}
                     <ion-icon name="arrow-forward-outline" className="ml-2 transition-transform duration-300 group-hover/link:translate-x-1"></ion-icon>
                 </button>
             </div>
@@ -117,7 +118,7 @@ const Services: React.FC = () => {
               </AnimatedElement>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 [perspective:1500px]">
             {services.map((service, index) => (
               <AnimatedElement key={service.title} animation="fade-in-up" delay={`duration-${300 + index * 100}`}>
                 <ServiceCard service={service} index={index} onLearnMore={openModal} />
@@ -133,7 +134,7 @@ const Services: React.FC = () => {
                   </p>
                   <div className="mt-8">
                       <a href="#help-and-support" className="inline-block text-white font-poppins font-semibold py-4 px-8 rounded-full bg-gradient-to-r from-orange-primary to-amber-primary hover:scale-105 transform transition-transform duration-300 shadow-lg hover:shadow-orange-primary/50">
-                          Request a Quote
+                          Request a Free Quote
                       </a>
                   </div>
               </AnimatedElement>

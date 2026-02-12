@@ -51,8 +51,8 @@ const About: React.FC = () => {
             <div className="relative">
                 <div className="absolute -inset-2 rounded-xl bg-gradient-to-r from-cyan-accent to-purple-accent opacity-20 blur-2xl"></div>
                 <ProgressiveImage 
-                  src="https://picsum.photos/seed/logistics/800/600" 
-                  placeholderSrc="https://picsum.photos/seed/logistics/80/60?blur=2"
+                  src="https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg" 
+                  placeholderSrc="https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg"
                   alt="Logistics operation" 
                   className="relative rounded-xl shadow-2xl w-full" 
                 />
