@@ -1,14 +1,13 @@
 # Amber Landon Services
 
 <div align="center">
-  <img src="https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg" alt="Amber Landon Services Banner" width="800">
+  <img src="https://i.ibb.co/N65F6MhW/Screenshot-2026-02-16-125332.png" alt="Amber Landon Services Banner" width="800">
   <br>
   <br>
   <a href="#overview">Overview</a> •
   <a href="#features">Features</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </div>
@@ -83,139 +82,39 @@ Amber Landon Services is a modern, responsive business website for a global logi
 - npm or yarn package manager
 
 ### Setup Instructions
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/amber-landon-services.git
-   cd amber-landon-services
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Environment Configuration**
-   Create a `.env.local` file in the root directory:
-   ```env
-   GEMINI_API_KEY=your_gemini_api_key_here
-   ```
-
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-6. **Preview production build**
-   ```bash
-   npm run preview
-   ```
+1. Clone the repository
+2. Install dependencies
+3. Configure environment variables
+4. Start the development server
+5. Build for production when ready
 
 ## Usage
 
 ### Development Workflow
-- **Hot Reload**: Changes are automatically reflected in the browser
-- **Type Checking**: TypeScript provides real-time type validation
-- **Linting**: ESLint ensures code quality and consistency
-- **Build Optimization**: Vite provides fast builds and optimizations
+- Hot reload for instant changes
+- TypeScript for type safety
+- ESLint for code quality
+- Vite for fast builds
 
-### Customization
-
-#### Theme Colors
-Modify the color scheme in `index.html`:
-```javascript
-colors: {
-  navy: '#0F172A',
-  'deep-blue': '#1E40AF',
-  'orange-primary': '#F97316',
-  'amber-primary': '#F59E0B',
-  // ... more colors
-}
-```
-
-#### Services Configuration
-Update services in `constants.ts`:
-```typescript
-export const services = [
-  {
-    title: 'Your Service Name',
-    description: 'Service description',
-    details: 'Detailed service information',
-    image: 'path/to/your/image.jpg',
-    // ... more properties
-  }
-];
-```
-
-#### Navigation
-Modify navigation links in `constants.ts`:
-```typescript
-export const navLinks = [
-  { name: 'Page Name', href: '#section-id' },
-  // ... more links
-];
-```
+### Customization Options
+- Theme colors can be modified in the configuration
+- Services and navigation can be updated through constants
+- Components can be easily extended or modified
 
 ## Project Structure
 
-```
-amber-landon-services/
-├── components/              # React components
-│   ├── Header.tsx          # Navigation header
-│   ├── Hero.tsx            # Hero section with animations
-│   ├── Services.tsx        # Services showcase
-│   ├── About.tsx           # About us section
-│   ├── Process.tsx         # Service process visualization
-│   ├── Testimonials.tsx    # Client testimonials
-│   ├── Contact.tsx         # Contact form
-│   ├── Footer.tsx          # Footer with links
-│   ├── ChatWidget.tsx      # AI chat widget
-│   ├── CookieBanner.tsx    # Cookie consent
-│   ├── CustomCursor.tsx    # Custom cursor effects
-│   ├── GradientMeshCanvas.tsx  # 3D gradient background
-│   ├── ParticlesCanvas.tsx     # Particle effects
-│   └── ...                 # More components
-├── hooks/                   # Custom React hooks
-│   ├── useScrollAnimation.ts  # Scroll-triggered animations
-│   └── useTheme.tsx           # Theme management
-├── App.tsx                 # Main application component
-├── index.tsx               # Application entry point
-├── constants.ts            # Application constants and data
-├── index.html              # HTML template with Tailwind config
-├── vite.config.ts          # Vite build configuration
-├── tsconfig.json           # TypeScript configuration
-└── package.json            # Project dependencies
-```
+The project follows a modular architecture with clear separation of concerns:
+
+- **components/** - Reusable React components for UI elements
+- **hooks/** - Custom React hooks for state management and logic
+- **constants.ts** - Application-wide constants and configuration data
+- **App.tsx** - Main application component and routing
+- **index.tsx** - Application entry point
+- **Configuration files** - Build and development settings
 
 ## Contributing
 
-We welcome contributions to improve Amber Landon Services! Here's how you can help:
-
-### Development Guidelines
-1. **Fork the repository** and create a feature branch
-2. **Follow the existing code style** and naming conventions
-3. **Write TypeScript** for all new components and utilities
-4. **Test responsiveness** across different screen sizes
-5. **Optimize performance** for animations and image loading
-6. **Submit pull requests** with clear descriptions
-
-### Code Style
-- Use functional components with TypeScript
-- Follow React best practices and hooks patterns
-- Maintain consistent naming conventions
-- Add proper TypeScript types for all props and functions
-- Use semantic HTML elements
-
-### Performance Considerations
-- Implement lazy loading for images and components
-- Optimize animations for smooth 60fps performance
-- Minimize bundle size with code splitting
-- Use efficient state management patterns
+We welcome contributions to improve Amber Landon Services! Contributors should follow established code patterns and ensure compatibility with the existing architecture.
 
 ## License
 
