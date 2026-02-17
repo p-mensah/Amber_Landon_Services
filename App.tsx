@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Suspense, memo } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -12,28 +12,35 @@ import CookieBanner from './components/CookieBanner';
 import AnimatedElement from './components/AnimatedElement';
 import ChatWidget from './components/ChatWidget';
 
-const App: React.FC = () => {
+const App: React.FC = memo(() => {
   return (
-    <div className="relative isolate min-h-screen">
+    <div 
+      className="relative isolate min-h-screen"
+      style={{
+        willChange: 'transform',
+        contain: 'layout style paint'
+      }}
+    >
+      {/* Optimized background patterns with better performance */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-navy bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       <div className="absolute -z-10 top-0 left-0 w-full h-[50vh] bg-gradient-to-br from-purple-accent/10 via-deep-blue/10 to-transparent dark:from-purple-accent/20 dark:via-deep-blue/20"></div>
 
       <Header />
       <main>
         <Hero />
-        <AnimatedElement animation="fade-in-up">
+        <AnimatedElement animation="fade-in-up" delay="duration-700">
           <Services />
         </AnimatedElement>
-        <AnimatedElement animation="fade-in">
+        <AnimatedElement animation="fade-in" delay="duration-500">
           <About />
         </AnimatedElement>
-        <AnimatedElement animation="fade-in-up">
+        <AnimatedElement animation="fade-in-up" delay="duration-700">
           <Process />
         </AnimatedElement>
-        <AnimatedElement animation="zoom-in">
+        <AnimatedElement animation="zoom-in" delay="duration-1000">
           <Testimonials />
         </AnimatedElement>
-        <AnimatedElement animation="fade-in">
+        <AnimatedElement animation="fade-in" delay="duration-500">
           <HelpAndSupport />
         </AnimatedElement>
       </main>
@@ -42,6 +49,8 @@ const App: React.FC = () => {
       <ChatWidget />
     </div>
   );
-};
+});
+
+App.displayName = 'App';
 
 export default App;

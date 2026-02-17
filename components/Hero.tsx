@@ -1,60 +1,75 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import Typed from 'typed.js';
 import AnimatedElement from './AnimatedElement';
 import GradientMeshCanvas from './GradientMeshCanvas';
 import ProgressiveImage from './ProgressiveImage';
 
 const heroImages = [
-  { src: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg', placeholder: 'https://i.ibb.co/gbqYgKM4/pexels-enginakyurt-4170172.jpg' },
   { src: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg', placeholder: 'https://i.ibb.co/qLmpGGkW/pexels-attie-9296985.jpg' },
-  { src: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg', placeholder: 'https://i.ibb.co/dwkXnjyD/pexels-ethan-nguyen-63327081-9749472.jpg' },
-  { src: 'https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg', placeholder: 'https://i.ibb.co/wrjLzqzf/pexels-pixabay-262353.jpg' },
   { src: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg', placeholder: 'https://i.ibb.co/Fk6Jb9z3/pexels-tomfisk-2231744.jpg' },
 ];
 
-const Hero: React.FC = () => {
+const Hero: React.FC = memo(() => {
   const el = useRef<HTMLSpanElement>(null);
+  const typedRef = useRef<Typed | null>(null);
 
   useEffect(() => {
-    const typed = new Typed(el.current!, {
+    // Initialize Typed.js with optimized settings
+    typedRef.current = new Typed(el.current!, {
       strings: ['Branding & Design.', 'Global Procurement.', 'Air & Sea Cargo.', 'Supplier Visits.'],
       typeSpeed: 50,
       backSpeed: 30,
       backDelay: 2000,
       loop: true,
       smartBackspace: true,
+      showCursor: false,
+      fadeOut: true,
+      fadeOutDelay: 500
     });
 
+    // Initialize Swiper with performance optimizations
     const Swiper = (window as any).Swiper;
     if (Swiper) {
       new Swiper('.hero-slider', {
         effect: 'fade',
-        fadeEffect: {
-          crossFade: true,
-        },
+        fadeEffect: { crossFade: true },
         loop: true,
-        autoplay: {
-          delay: 4000,
+        autoplay: { 
+          delay: 4000, 
           disableOnInteraction: false,
+          pauseOnMouseEnter: true
         },
         allowTouchMove: false,
         speed: 1500,
+        lazy: true,
+        preloadImages: false,
         navigation: {
           nextEl: '.hero-slider .swiper-button-next',
           prevEl: '.hero-slider .swiper-button-prev',
         },
+        // Performance optimizations
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
       });
     }
 
     return () => {
-      typed.destroy();
+      if (typedRef.current) {
+        typedRef.current.destroy();
+      }
     };
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image Slider */}
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      style={{
+        willChange: 'transform',
+        contain: 'layout style paint'
+      }}
+    >
       <div className="absolute inset-0 swiper hero-slider opacity-10 dark:opacity-5">
         <div className="swiper-wrapper">
           {heroImages.map((image, index) => (
@@ -63,7 +78,8 @@ const Hero: React.FC = () => {
                 src={image.src} 
                 placeholderSrc={image.placeholder} 
                 alt={`Shipping background ${index + 1}`} 
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-cover"
+                priority={index === 0} // Only preload first image
               />
             </div>
           ))}
@@ -90,7 +106,14 @@ const Hero: React.FC = () => {
         </AnimatedElement>
         <AnimatedElement animation="zoom-in" delay="duration-1000">
           <div className="mt-10">
-            <a href="#help-and-support" className="inline-block text-white font-poppins font-semibold py-4 px-8 rounded-full bg-gradient-to-r from-orange-primary to-amber-primary hover:scale-105 transform transition-transform duration-300 shadow-lg hover:shadow-orange-primary/50 animate-pulse-glow">
+            <a 
+              href="#help-and-support" 
+              className="inline-block text-white font-poppins font-semibold py-4 px-8 rounded-full bg-gradient-to-r from-orange-primary to-amber-primary hover:scale-105 transform transition-transform duration-300 shadow-lg hover:shadow-orange-primary/50 animate-pulse-glow"
+              style={{
+                willChange: 'transform, box-shadow',
+                transform: 'translateZ(0)'
+              }}
+            >
               Request a Free Quote
             </a>
           </div>
@@ -106,6 +129,8 @@ const Hero: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

@@ -1,184 +1,105 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amber Landon Services</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-    
-    <!-- Swiper.js for Carousels -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Typed.js for Text Animation -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <!-- Vanilla-Tilt.js for 3D Tilt Effect -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-
-    <!-- Heroicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              montserrat: ['Montserrat', 'sans-serif'],
-              poppins: ['Poppins', 'sans-serif'],
-            },
-            colors: {
-              navy: '#0F172A',
-              'deep-blue': '#1E40AF',
-              'orange-primary': '#F97316',
-              'amber-primary': '#F59E0B',
-              'cyan-accent': '#06B6D4',
-              'emerald-accent': '#10B981',
-              'purple-accent': '#8B5CF6',
-            },
-            animation: {
-              'gradient-bg': 'gradient-bg 15s ease infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'pulse-glow': 'pulse-glow 2s infinite ease-in-out',
-              'infinite-scroll': 'infinite-scroll 40s linear infinite',
-              'border-flow': 'border-flow 4s linear infinite',
-              'progress-ring': 'progress-ring 0.8s ease-out forwards',
-              'checkmark': 'checkmark 0.3s ease-out 0.8s forwards',
-            },
-            keyframes: {
-              'gradient-bg': {
-                '0%, 100%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
-              },
-              'float': {
-                '0%, 100%': { transform: 'translateY(0px)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              'pulse-glow': {
-                '0%, 100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)' },
-                '50%': { boxShadow: '0 0 35px rgba(249, 115, 22, 1)' },
-              },
-              'infinite-scroll': {
-                'from': { transform: 'translateX(0)' },
-                'to': { transform: 'translateX(-50%)' },
-              },
-              'border-flow': {
-                '0%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
-                '100%': { backgroundPosition: '0% 50%' },
-              },
-              'progress-ring': {
-                'to': { strokeDashoffset: '0' },
-              },
-              'checkmark': {
-                'to': { strokeDashoffset: '0' },
-              }
-            }
-          },
-        },
-      }
-    </script>
-    <style>
-      .gradient-text {
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .swiper-pagination-bullet-active {
-        background-color: #F97316 !important;
-      }
-      .swiper-button-next,
-      .swiper-button-prev {
-        color: #F97316 !important;
-        transition: all 0.3s ease;
-      }
-      .swiper-button-next:hover,
-      .swiper-button-prev:hover {
-        transform: scale(1.2);
-      }
-      .dark .swiper-button-next,
-      .dark .swiper-button-prev {
-        color: #F59E0B !important;
-      }
-      .swiper-slide .quote-content,
-      .swiper-slide .star-rating,
-      .swiper-slide .client-info {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-      .swiper-slide-active .quote-content,
-      .swiper-slide-active .star-rating,
-      .swiper-slide-active .client-info {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .swiper-slide-active .quote-content {
-        transition-delay: 0.3s;
-      }
-      .swiper-slide-active .star-rating {
-        transition-delay: 0.2s;
-      }
-      .swiper-slide-active .client-info {
-        transition-delay: 0.4s;
-      }
-      .star {
-        transition: transform 0.3s ease-in-out;
-        transition-delay: var(--star-delay, 0ms);
-      }
-       .swiper-slide-active .star {
-        transform: scale(1.1) rotate(5deg);
-      }
-      *:focus-visible {
-        outline: 2px solid #F97316;
-        outline-offset: 2px;
-        border-radius: 4px;
-      }
-      /* Hero Slider Navigation */
-      .hero-slider .swiper-button-next,
-      .hero-slider .swiper-button-prev {
-        color: white;
-        opacity: 0;
-        transition: all 0.3s ease;
-        --swiper-navigation-size: 32px;
-      }
-      .hero-slider:hover .swiper-button-next,
-      .hero-slider:hover .swiper-button-prev {
-        opacity: 0.7;
-      }
-      .hero-slider .swiper-button-next:hover,
-      .hero-slider .swiper-button-prev:hover {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "swiper/": "https://esm.sh/swiper@^12.1.0/",
-    "typed.js": "https://esm.sh/typed.js@^3.0.0"
-  }
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amber Landon Services</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+tailwind.config={
+darkMode:'class',
+theme:{
+extend:{
+fontFamily:{
+sans:['Inter','sans-serif'],
+montserrat:['Montserrat','sans-serif'],
+poppins:['Poppins','sans-serif'],
+},
+colors:{
+navy:'#0F172A',
+'deep-blue':'#1E40AF',
+'orange-primary':'#F97316',
+'amber-primary':'#F59E0B',
+'cyan-accent':'#06B6D4',
+'emerald-accent':'#10B981',
+'purple-accent':'#8B5CF6',
+},
+animation:{
+'gradient-bg':'gradient-bg 15s ease infinite',
+'float':'float 6s ease-in-out infinite',
+'pulse-glow':'pulse-glow 2s infinite ease-in-out',
+'infinite-scroll':'infinite-scroll 40s linear infinite',
+'border-flow':'border-flow 4s linear infinite',
+'progress-ring':'progress-ring 0.8s ease-out forwards',
+'checkmark':'checkmark 0.3s ease-out 0.8s forwards',
+},
+keyframes:{
+'gradient-bg':{
+'0%,100%':{backgroundPosition:'0% 50%'},
+'50%':{backgroundPosition:'100% 50%'},
+},
+'float':{
+'0%,100%':{transform:'translateY(0px)'},
+'50%':{transform:'translateY(-20px)'},
+},
+'pulse-glow':{
+'0%,100%':{boxShadow:'0 0 20px rgba(249,115,22,0.5)'},
+'50%':{boxShadow:'0 0 35px rgba(249,115,22,1)'},
+},
+'infinite-scroll':{
+'from':{transform:'translateX(0)'},
+'to':{transform:'translateX(-50%)'},
+},
+'border-flow':{
+'0%':{backgroundPosition:'0% 50%'},
+'50%':{backgroundPosition:'100% 50%'},
+'100%':{backgroundPosition:'0% 50%'},
+},
+'progress-ring':{
+'to':{strokeDashoffset:'0'},
+},
+'checkmark':{
+'to':{strokeDashoffset:'0'},
+}
+}
+}
+}
 }
 </script>
+<style>
+.gradient-text{background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.swiper-pagination-bullet-active{background-color:#F97316!important}
+.swiper-button-next,.swiper-button-prev{color:#F97316!important;transition:all 0.3s ease}
+.swiper-button-next:hover,.swiper-button-prev:hover{transform:scale(1.2)}
+.dark .swiper-button-next,.dark .swiper-button-prev{color:#F59E0B!important}
+.swiper-slide .quote-content,.swiper-slide .star-rating,.swiper-slide .client-info{opacity:0;transform:translateY(30px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+.swiper-slide-active .quote-content,.swiper-slide-active .star-rating,.swiper-slide-active .client-info{opacity:1;transform:translateY(0)}
+.swiper-slide-active .quote-content{transition-delay:0.3s}
+.swiper-slide-active .star-rating{transition-delay:0.2s}
+.swiper-slide-active .client-info{transition-delay:0.4s}
+.star{transition:transform 0.3s ease-in-out;transition-delay:var(--star-delay,0ms)}
+.swiper-slide-active .star{transform:scale(1.1) rotate(5deg)}
+*:focus-visible{outline:2px solid #F97316;outline-offset:2px;border-radius:4px}
+.hero-slider .swiper-button-next,.hero-slider .swiper-button-prev{color:white;opacity:0;transition:all 0.3s ease;--swiper-navigation-size:32px}
+.hero-slider:hover .swiper-button-next,.hero-slider:hover .swiper-button-prev{opacity:0.7}
+.hero-slider .swiper-button-next:hover,.hero-slider .swiper-button-prev:hover{opacity:1;transform:scale(1.2)}
+</style>
+<script type="importmap">{"imports":{"react/":"https://esm.sh/react@^19.2.4/","react":"https://esm.sh/react@^19.2.4","react-dom/":"https://esm.sh/react-dom@^19.2.4/","swiper/":"https://esm.sh/swiper@^12.1.0/","typed.js":"https://esm.sh/typed.js@^3.0.0"}}</script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-50 dark:bg-navy text-slate-800 dark:text-slate-200 font-sans antialiased overflow-x-hidden">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+<body class="bg-slate-50 dark:bg-navy text-slate-800 dark:text-slate-200 font-sans antialiased overflow-x-hidden">
+<div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
 </html>

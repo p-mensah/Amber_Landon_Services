@@ -1,0 +1,168 @@
+/* Performance-optimized CSS for Amber Landon Services */
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-color: #F97316;
+  --secondary-color: #F59E0B;
+  --text-color: #0F172A;
+  --bg-color: #f8fafc;
+  --transition-speed: 0.3s;
+}
+
+/* Dark theme variables */
+.dark {
+  --primary-color: #F59E0B;
+  --secondary-color: #F97316;
+  --text-color: #f1f5f9;
+  --bg-color: #0f172a;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.zoom-in {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Optimize image loading */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optimize background images */
+.bg-gradient-mesh {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize scroll performance */
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize button interactions */
+button, a {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce repaints on hover */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Optimize text rendering */
+.text-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Optimize layout shifts */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Reduce layout thrashing */
+.section {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Optimize z-index stacking */
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Optimize focus states */
+.focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Optimize loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Optimize responsive typography */
+h1 { font-size: clamp(2rem, 8vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 6vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 4vw, 2rem); }
+p { font-size: clamp(0.875rem, 2vw, 1.125rem); }
+
+/* Optimize dark mode transitions */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optimize mobile performance */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .section { min-height: auto; }
+}
